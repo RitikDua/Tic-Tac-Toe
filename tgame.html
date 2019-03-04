@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tic Tac Toe</title>
+  <meta charset="utf-8">
+  <meta name="viewport" contents="width=device-width,initial-scale=1.0">
+  <style>
+  body{
+    background-color: rgba(111,121,222,0.9);
+  }
+    *{
+      box-sizing:border-box
+    }
+    .container{
+      width:500px;overflow:hidden;margin:50px auto 0 auto;
+    
+    }
+    #play{
+      background:rgba(112,112,191,0.9);text-align:center;font-size:42px;font-family:verdana;color:white;border:1px solid transparent;width:300px;box-shadow: 0 5px rgba(12,12,80,0.9);
+  transform: translateY(4px);margin-left:70px;border-radius: 6px;transform: translateY(4px);transition: all .25s ease-in-out;
+    }
+    .container .box{
+  color:rgba(12,12,111,0.9);
+      float:left;
+      width:150px;
+      height:100px;
+      transition: all .25s ease-in-out;font-family:sans-serif;
+      font-size:85px;text-align:center;
+      line-height:100px;
+font-weight:bold;
+    }
+    .container .box:hover
+    {
+      background-color: rgba(13,103,130,0.9);
+      
+    }
+    .container .box:active
+    {
+       background-color: red;
+  box-shadow: 0 5px grey;
+  transform: translateY(4px);
+    }
+    #reset
+    {
+      background-color:green;
+      font-weight:bold;
+      color:white;
+      border: 1px solid green;
+      border-radius: 10px;
+      width:160px;
+      font-family:helvetica;
+      height: 40px;font-size:20px;
+      display: block;
+      margin:20px auto;
+      margin-left:419px;
+    }
+     .win{color:green; }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>var x=1;
+    $(document).ready(function(){
+ $("#reset").on("click",function(){location.reload();
+
+      });
+          $("#play").click(function(){
+    var x=prompt("Enter Name of Player1");
+    var y=prompt("Enter Name of Player2");
+  
+          
+          $("#Player1").text(x+"\n (O)");
+      $("#Player2").text(y+"\n (X)");
+
+    
+  var move = 1;
+  var play = true;
+
+  $(".box").click(function() {
+    if ($(this).text()=="" && play) {
+      if ((move%2)==1) { $(this).append("X"); } 
+      else { $(this).append("O"); }
+      move++; 
+      if (checkForWinner()!=-1 && checkForWinner()!="") { 
+  if (checkForWinner()=="X") { alert(y+" wins!"); }
+        else { alert(x+" wins!"); }
+        play = false; 
+      }
+    }else if (checkForWinner()!='X'&&checkForWinner()!='O')// && checkForWinner()!=""))
+        {alert("sorry try again.....press reset button");play=false;}
+  });
+
+  function checkForWinner() {
+    var space1 = $("#box1").text();
+    var space2 = $("#box2").text();
+    var space3 = $("#box3").text();
+    var space4 = $("#box4").text();
+    var space5 = $("#box5").text();
+    var space6 = $("#box6").text();
+    var space7 = $("#box7").text();
+    var space8 = $("#box8").text();
+    var space9 = $("#box9").text();
+    // check rows
+    if      ((space1==space2) && (space2==space3)) { return space3; }
+    else if ((space4==space5) && (space5==space6)) { return space6; } 
+    else if ((space7==space8) && (space8==space9)) { return space9; }
+    // check columns
+    else if ((space1==space4) && (space4==space7)) { return space7; }
+    else if ((space2==space5) && (space5==space8)) { return space8; }
+    else if ((space3==space6) && (space6==space9)) { return space9; }
+    // check diagonals
+    else if ((space1==space5) && (space5==space9)) { return space9; }
+    else if ((space3==space5) && (space5==space7)) { return space7; }
+    // no winner
+    else
+    return -1;
+  }
+        });
+});
+  </script>
+</head>
+<body>
+<header><h1 style="background-color: white;color:rgba(111,121,222,0.9);width:380px;border-radius:8px;margin-left:450px;height:56px;font-size:40px;font-family:helvetica;margin-bottom:0px;";>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTic Tac Toe</h1></header>
+<div class="container" id="main">
+  <button id="play" >Play</button>
+  <br>
+  <br>
+  <button id="Player1" style="margin-left:20px;background:orange;text-align:center;font-size:22px;color:red;border:1px solid transparent;border-radius:7px;width:200px;box-shadow: 0 5px red;
+  transform: translateY(4px);">Player name <br> Sign</button><button id="Player2" style="margin-left:30px;background:rgba(290,3,4,0.9);font-family:arial;text-align:center;font-size:22px;color:orange;border:1px solid transparent;border-radius:7px;width:200px;box-shadow: 0 5px orange;
+  transform: translateY(4px);">Player name <br>Sign</button>
+  <br>
+  <br>
+  <br>
+  <button class="box" id="box1"></button>
+  <button class="box" id="box2"></button>
+  <button class="box" id="box3"></button>
+  <button class="box" id="box4"></button>
+  <button class="box" id="box5"></button>
+  <button class="box" id="box6"></button>
+  <button class="box" id="box7"></button>
+  <button class="box" id="box8"></button>
+  <button class="box" id="box9"></button>
+</div>
+<button id="reset">Reset</button>
+</body>
+</html>

@@ -33,9 +33,9 @@ A Content Delivery Network (CDN) is a system of computers that exist all over th
 
 
 ### Step 1
-* fork this repo
+* fork this repo.
 ### Step 2
-* create a nw pull resquest
+* create a new pull resquest.
 
 ## License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
